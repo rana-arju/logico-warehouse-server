@@ -17,7 +17,7 @@ await client.connect();
   const logicaCollection = client.db("logicaProduct").collection("products");
 
   // POST Method for new product add
-  app.post('/products', async(req, res) => {
+  app.post('/allproducts', async(req, res) => {
     const product = req.body;
     if (!product.name || !product.price || !product.images || !product.stock) {
       return res.send({success:false, error: "Please Provide all Info"});
@@ -41,7 +41,7 @@ app.get('/products/:id', async(req, res) => {
   const query = {_id: ObjectId(id)};
   const result = await logicaCollection.findOne(query);
   res.send(result);
-})
+});
 //GET method for find stock
 app.get("/allproducts", async(req, res) => {
   const cursor = logicaCollection.find({});
@@ -50,7 +50,15 @@ app.get("/allproducts", async(req, res) => {
     return res.send({success: false, error: "No Products Found"})
   }
   res.send({success: true, data:products})
-})
+});
+//FIND method for my product by Email
+app.get('/myproducts', async(req, res) => {
+  const email = req.query.email;
+  const query = {email: email};
+  const cursor = logicaCollection.find(query);
+  const orders = await cursor.toArray();
+  res.send(orders);
+});
 //DELETE method , single item delete from manage item page
 app.delete('/products/:id', async(req, res) => {
   const id = req.params.id;
