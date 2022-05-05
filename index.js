@@ -51,6 +51,13 @@ app.get("/allproducts", async(req, res) => {
   }
   res.send({success: true, data:products})
 })
+//DELETE method , single item delete from manage item page
+app.delete('/products/:id', async(req, res) => {
+  const id = req.params.id;
+  const query = {_id: ObjectId(id)};
+  const result = await logicaCollection.deleteOne(query);
+  res.send({message: "One Item Deleted!"});
+});
 
 
  }finally{
