@@ -42,7 +42,7 @@ app.get('/products/:id', async(req, res) => {
   const result = await logicaCollection.findOne(query);
   res.send(result);
 });
-//GET method for find stock
+//GET method for getting all product 
 app.get("/allproducts", async(req, res) => {
   const cursor = logicaCollection.find({});
   const products = await cursor.toArray();
@@ -50,6 +50,27 @@ app.get("/allproducts", async(req, res) => {
     return res.send({success: false, error: "No Products Found"})
   }
   res.send({success: true, data:products})
+});
+//GET method for delivery
+app.get("/allproducts/:id", async(req, res) => {
+  const id = req.params.id;
+  const query = {_id: ObjectId(id)};
+  const result = await logicaCollection.findOne(query);
+  res.send(result);
+});
+//Update method for stock update
+app.put("/allproducts/:id", async(req, res) => {
+  const id = req.params.id;
+  const updateStock = req.body;
+  const filter= {_id: ObjectId(id)};
+  const options = {upsert: true};
+  const updatedDoc = {
+    $set: {
+      stock:updateStock.deliver
+    }
+  };
+  const result = await logicaCollection.updateOne(filter, updatedDoc, options);
+  res.send(result);
 });
 //FIND method for my product by Email
 app.get('/myproducts', async(req, res) => {
