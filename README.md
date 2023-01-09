@@ -4,7 +4,7 @@
 
 ## Client Live Preview 2: https://logica-f4803.firebaseapp.com/
 
-## Server Live: https://logico-server.onrender.com/
+## Server Live: http://localhost:5000/
 
 ![Logika full Vew Image](https://i.ibb.co/K9c8Tn6/logika-full-view.png)
 
