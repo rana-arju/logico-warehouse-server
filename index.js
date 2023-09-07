@@ -21,7 +21,7 @@ readdirSync("./routes").map((r) =>
 );
 mongoose.set("strictQuery", true);
 //database connect
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect("mongodb+srv://ranaarju:ranaarju@cluster0.ovwjs.mongodb.net/logicaProduct?retryWrites=true&w=majority", {
     useNewUrlParser: true,
   })
   .then(() => {
@@ -47,8 +47,8 @@ mongoose.connect(process.env.DB_URL, {
 // };
 
 
-const run = async () => {
-  try {
+// const run = async () => {
+//   try {
 
     // const logicaCollection = client.db("logicaProduct").collection("products");
     // JWT AUTH for login
@@ -154,10 +154,10 @@ const run = async () => {
     //   const result = await logicaCollection.deleteOne(query);
     //   res.send({ message: "One Item Deleted!" });
     // });
-  } finally {
-  }
-};
-run().catch(console.dir);
+//   } finally {
+//   }
+// };
+// run().catch(console.dir);
 
 //END
 app.get("/", (req, res) => {

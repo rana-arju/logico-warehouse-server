@@ -14,12 +14,16 @@ const productSchema = new mongoose.Schema(
       required: [true, "Product description is required"],
     },
     images: {
-      type: Array,
+      type: String
     },
+    // seller: {
+    //   type: ObjectId,
+    //   ref: "User",
+    //   required: true,
+    // },
     seller: {
-      type: ObjectId,
-      ref: "User",
-      required: true,
+      type: String,
+     
     },
     price: {
       type: Number,
@@ -28,6 +32,10 @@ const productSchema = new mongoose.Schema(
     stock: {
       type: Number,
       required: [true, "Stock is required"],
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
     },
   },
   {

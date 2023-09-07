@@ -27,8 +27,7 @@ exports.products = async (req, res) => {
       "seller",
       "first_name last_name username picture"
     );
-
-    res.json({ products, singleProduct });
+    res.json({ products});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
