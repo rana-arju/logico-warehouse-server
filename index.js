@@ -19,7 +19,7 @@ app.use(express.json());
 readdirSync("./routes").map((r) =>
   app.use("/api/v1", require("./routes/" + r))
 );
-mongoose.set("strictQuery", true);
+mongoose.set("strictQuery", false);
 //database connect
 mongoose.connect("mongodb+srv://ranaarju:ranaarju@cluster0.ovwjs.mongodb.net/logicaProduct?retryWrites=true&w=majority", {
     useNewUrlParser: true,

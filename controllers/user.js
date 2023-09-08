@@ -8,6 +8,8 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 exports.register = async (req, res) => {
   const { first_name, last_name, email, password } = req.body;
+    console.log("hello", req.body);
+
   if (!validateEmail(email)) {
     return res.status(400).json({
       message: "invalid email address",

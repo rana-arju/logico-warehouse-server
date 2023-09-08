@@ -1,3 +1,5 @@
+const User = require("../models/User");
+
 exports.validateUsername = async (username) => {
   let a = false;
 
@@ -14,6 +16,7 @@ exports.validateUsername = async (username) => {
   return username;
 };
 exports.validateEmail = (email) => {
+  // console.log("hi", email);
   return String(email)
     .toLowerCase()
     .match(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,12})(\.[a-z]{2,12})?$/);
